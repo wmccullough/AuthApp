@@ -11,6 +11,8 @@ namespace AuthApp.Controllers
     {
         public IActionResult Index()
         {
+            var user = User.IsInRole("Physicians");
+
             return View();
         }
 

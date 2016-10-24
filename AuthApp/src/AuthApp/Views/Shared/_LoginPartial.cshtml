@@ -2,16 +2,16 @@
     @if (User.Identity.IsAuthenticated)
     {
         <li class="navbar-text">
-            @User.Identity.Name
+            @User.Identity.Name <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </li>
         <li>
-            <a asp-action="SignOut" asp-controller="Account">Sign out</a>
+            <a asp-action="SignOut" asp-controller="Account"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
         </li>
     }
     else
     {
         <li>
-            <a asp-action="SignIn" asp-controller="Account">Sign in</a>
+            <a asp-action="SignIn" asp-controller="Account"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
         </li>
     }
 </ul>

@@ -1,3 +1,126 @@
-﻿<div class="jumbotron">
-    <h1>Front page</h1>
-</div>
+﻿@if (User.IsInRole("Physicians"))
+{
+
+}
+<br /><br />
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Good morning, @User.Identity.Name</h2>
+                @if (User.IsInRole("Physicians"))
+                {
+                    <p>There are 10 cases currently needing physician review</p>
+                    <button class="btn btn-info">Work Those Cases!</button>
+                }
+                else
+                {
+                    <p>There are 108 faxes currently in the queue</p>
+                    <button class="btn btn-info">Work Those Faxes!</button>
+                }
+
+            </div>
+            <div class="col-md-2">
+                <div class="well">
+                    <strong>DAILY AVG</strong><br />
+                    @if (User.IsInRole("Physicians"))
+                {
+                        <h1>56</h1><br />
+                        <p>Cases Reviewed</p>
+                    }
+                    else
+                    {
+                        <h1>117</h1><br />
+                        <p>Faxes Worked</p>
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="well">
+                    <strong>DAILY AVG</strong><br />
+                    <h1>88</h1><br />
+                    <p>Cases Worked</p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Your Dashboard</h3>
+                @if (User.IsInRole("Physicians"))
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Case</td>
+                                <td>Recommendation</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#34568439</td>
+                                <td>No clinical documentation attached</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-comment" aria-hidden="true">
+                                        </span> Render Decision
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Case</td>
+                                <td>Status</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#34568439</td>
+                                <td>Awaiting clinical documentation</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-upload" aria-hidden="true">
+                                        </span> Attach
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <h4 class="text-center">News &amp; Updates</h4>
+                    <ul>
+                        <li>Ball Lightning Destroys Toupee But Polishes Victim's Car</li>
+                        <li>Broccoli Found To Cause Grumpiness In Children</li>
+                        <li>Eckelberry Marmalade May Cure Hiccups, Doctors Say</li>
+                    </ul>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="text-center">You must login to continue!</h1>
+    <div class="text-center">
+        <a asp-action="SignIn" asp-controller="Account" class="btn btn-danger"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Login</a>
+    </div>
+}
