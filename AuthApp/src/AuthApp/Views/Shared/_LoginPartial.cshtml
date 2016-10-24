@@ -1,8 +1,8 @@
 ﻿<ul class="nav navbar-nav navbar-right">
     @if (User.Identity.IsAuthenticated)
     {
-        <li class="navbar-text">
-            @User.Identity.Name <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <li>
+            <a href="#">@User.Identity.Name <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
         </li>
         <li>
             <a asp-action="SignOut" asp-controller="Account"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
@@ -15,3 +15,10 @@
         </li>
     }
 </ul>
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    });
+</script>

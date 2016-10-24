@@ -1,4 +1,5 @@
-﻿@if (User.IsInRole("Physicians"))
+﻿@model AuthApp.Models.UserViewModel
+@if (User.IsInRole("Physicians"))
 {
 
 }
@@ -8,21 +9,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h2>Good morning, @User.Identity.Name</h2>
+                <h2>Good morning, @Model.FirstName</h2>
                 @if (User.IsInRole("Physicians"))
                 {
-                    <p>There are 10 cases currently needing physician review</p>
+                    <p>There are 1 cases currently needing physician review</p>
                     <button class="btn btn-info">Work Those Cases!</button>
                 }
                 else
                 {
-                    <p>There are 108 faxes currently in the queue</p>
+                    <p>There are 1 faxes currently in the queue</p>
                     <button class="btn btn-info">Work Those Faxes!</button>
                 }
 
             </div>
             <div class="col-md-2">
-                <div class="well">
+                <div class="well text-center">
                     <strong>DAILY AVG</strong><br />
                     @if (User.IsInRole("Physicians"))
                 {
@@ -38,7 +39,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="well">
+                <div class="well text-center">
                     <strong>DAILY AVG</strong><br />
                     <h1>88</h1><br />
                     <p>Cases Worked</p>
@@ -55,14 +56,14 @@
                         <thead>
                             <tr>
                                 <td>Case</td>
-                                <td>Recommendation</td>
+                                <td>Status</td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>#34568439</td>
-                                <td>No clinical documentation attached</td>
+                                <td>No clinical documentation attached. Clinical documentation requested 13 days ago.</td>
                                 <td>
                                     <button class="btn btn-danger btn-sm">
                                         <span class="glyphicon glyphicon-comment" aria-hidden="true">
